@@ -1,6 +1,6 @@
 import Prismic from 'prismic-javascript'
 
-export default async ({ repositoryName, accessToken }) => {
+export default async ({ repositoryName, accessToken, options }) => {
   console.time(`Fetch Prismic data`)
   console.log(`Starting to fetch data from Prismic`)
 
@@ -8,7 +8,7 @@ export default async ({ repositoryName, accessToken }) => {
   const client = await Prismic.getApi(apiEndpoint, { accessToken })
 
   // Query all documents from client
-  const documents = await pagedGet(client)
+  const documents = await pagedGet(client, [], options)
 
   console.timeEnd(`Fetch Prismic data`)
 

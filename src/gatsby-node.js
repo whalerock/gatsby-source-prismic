@@ -8,9 +8,9 @@ const DocumentNode = createNodeFactory(`Document`)
 
 export const sourceNodes = async (
   { boundActionCreators: { createNode } },
-  { repositoryName, accessToken }
+  { repositoryName, accessToken, options }
 ) => {
-  const { documents } = await fetchData({ repositoryName, accessToken })
+  const { documents } = await fetchData({ repositoryName, accessToken, options })
 
   documents.forEach(pipe(DocumentNode, createNode))
 }
